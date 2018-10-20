@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> vue js</title>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+	<body>
+<br><br><br>
+  <div class="container">
+    <div id= "root">
+    <h3 align="center">Student Info</h3>
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+      <fieldset>
+
+
+
+        <!-- Text input for name field-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Name</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input   placeholder="Name" class="form-control"  type="text" v-model = "name">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input for Email field-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input  placeholder="E-Mail Address" class="form-control"  type="text" v-model = "email">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input for Phone no field-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Phone</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              <input  placeholder="+8801671234567" class="form-control" type="text" v-model = "phone">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input for Date of Birth field-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Date of Birth</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input  placeholder="Date" class="form-control"  type="date" v-model = "dob">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div id ="myForm" class="col-md-4">
+            <button  type="submit" class="btn btn-primary" @click="addinfo" >Send<span class="glyphicon glyphicon-send"></span></button>
+            
+     
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <h3 align="center">Data Sets</h3>
+    <!-- <div v-for="(students, index) in student" align="center">
+      <p> Name Mail Phone Date of births<p>
+      <p> {{students.name}} {{students.mail}} {{students.phone}} {{students.dob}} </p> 
+    </div> -->
+    <div v-for="(students, index) in student" align="center">
+    <tbody>
+    <tr v-for="(students, index) in student" align="center">
+        <td>{{students.name}}  &nbsp</td>
+        <td>{{students.email}}  &nbsp</td>
+        <td>{{students.phone}}  &nbsp</td>
+        <td>{{students.dob}}  &nbsp</td>
+    </tr>
+</tbody>
+</div>
+  </div>
+
+</div>
+
+
+<!-- /.container -->
+
+          <!-- Vue Js Part -->
+
+<script type="text/javascript" src="vue.js"></script>
+
+<script type="text/javascript">
+		new Vue({
+			el: "#root",
+			data: {
+				
+				student: []
+			},
+      
+			methods:{
+				addinfo:function(e){
+					
+					this.student.push({name:this.name,phone:this.phone,email:this.email,dob:this.dob});
+					this.name="";
+          this.email="";
+          this.phone="";
+          this.dob="";
+					this.student.name="";
+					e.preventDefault();			
+				}
+			}
+
+			
+		});
+
+    
+</script>
+</body>
+</html>
